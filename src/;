@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+
+#include "input/parse_data_impl.h"
+
+int main(int argc, char** argv) {
+	auto data_parser = ParseDataImpl();
+	
+	try {
+		data_parser.parse(argc, argv);
+	} catch (std::runtime_error& e) {
+		std::cerr << "Could not parse the given arguments: what() - " << e.what() << std::endl;
+		return 1;		
+	}
+
+	std::cout << "The selected regex is: " << data_parser.getRegex() << std::endl;
+	std::cout << "The selected output path is: " << data_parser.getPath() << std::endl;
+
+	std::ifstream file_stream(data_parser.getPath())
+
+	return 0;
+}
